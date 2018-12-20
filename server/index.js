@@ -1,13 +1,15 @@
 const fs = require('fs')
 const https = require('https')
 
+console.debug(`process.versions:\n${JSON.stringify(process.versions)}`)
+console.debug(`process.platform: ${process.platform}`)
+
 const PORT = 8081
 const HOST = 'localhost'
-const PATH = `${__dirname}/server`
 
 const options = {
-  key: fs.readFileSync(`${PATH}/key.pem`),
-  cert: fs.readFileSync(`${PATH}/certificate.pem`),
+  key: fs.readFileSync(`${__dirname}/key.pem`),
+  cert: fs.readFileSync(`${__dirname}/certificate.pem`),
 }
 
 const server = https.createServer(options, (req, res) => {
