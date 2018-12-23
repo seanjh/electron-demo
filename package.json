@@ -5,14 +5,17 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "debug": "NODE_ENV=dev electron . --debug",
     "serve": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "electron": "^4.0.0"
+  },
   "devDependencies": {
-    "electron": "^3.0.13",
+    "devtron": "^1.4.0",
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0"
