@@ -1,0 +1,20 @@
+version: '3'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql
+    entrypoint: /bin/bash /usr/src/app/entrypoint.sh
+    command: /opt/mssql/bin/sqlservr
+    volumes:
+      - './entrypoint-mssql.sh:/usr/src/app/entrypoint.sh'
+      - './import-data-mssql.sh:/usr/src/app/import-data.sh'
+      - './sql-server-sakila-schema.sql:/usr/src/app/schema.sql'
+      - './sql-server-sakila-schema.sql:/usr/src/app/insert.sql'
+      - 'mssql:/var/opt/mssql'
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: 's3cr3t_p4ssw0rd'
+    ports:
+      - 8433:1433
+volumes:
+  mssql:
